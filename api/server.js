@@ -9,10 +9,10 @@ server.use(express.json());
 
 server.use('/api/posts', postsRouter);
 
-server.get('/', (req, res) => {
-  res.send(`
-    <h1>Posts API</h1>
-  `);
+server.use('*', (req, res) => {
+    res.status(404).json({
+        message: 'not found'
+    })
 });
 
 module.exports = server;
